@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="/index.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>My to do list</h1>
+
+        <button id="show-add-task">Add Task</button>
+
+        <select id="filter-tasks">
+            <option value="all">All</option>
+            <option value="done">Complete</option>
+            <option value="todo">Todo</option>
+        </select>
+
+        <!-- Yeni Görev Ekleme Pop-up -->
+        <div class="task-popup" id="task-popup">
+            <div class="popup-content">
+                <h3>Add New Task</h3>
+                <input type="text" id="popup-task-input" placeholder="New task...">
+                <div class="popup-buttons">
+                    <button id="add-popup-task">Add</button>
+                    <button class="cancel-popup-task">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Görev Düzenleme Pop-up -->
+        <div class="task-popup" id="edit-popup">
+            <div class="popup-content">
+                <h3>Edit Task</h3>
+                <input type="text" id="edit-popup-input">
+                <div class="popup-buttons">
+                    <button id="edit-popup-task">Edit</button>
+                    <button class="cancel-popup-task">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Todo Listesi -->
+        <ul class="todo-list">
+            <% todos.forEach(function(todo) { %>
+                <li data-id="<%= todo.id %>" class="<%= todo.completed ? 'completed' : '' %>">
+                    <input type="checkbox" class="toggle-status" <%= todo.completed ? 'checked' : '' %>>
+                    <span class="task-text"><%= todo.task %></span>
+                    <div class="actions">
+                        <button class="edit-task"><img src="/images/edit.png" alt="Edit"></button>
+                        <button class="delete-task"><img src="/images/delete.png" alt="Delete"></button>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+    <script src="/todos.js"></script>
+</body>
+</html>
