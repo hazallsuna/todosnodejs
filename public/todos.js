@@ -83,7 +83,7 @@ $(document).ready(function () {
         if (updatedTask && editingId) {
             $.ajax({
                 url: `${API_URL}/${editingId}`,
-                type: "PATCH",
+                type: "PUT",
                 contentType: "application/json",
                 data: JSON.stringify({ task: updatedTask }),
                 success: function () {
